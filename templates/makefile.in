@@ -1,4 +1,4 @@
-target=Main,nomusic=false,noeffects=false,debug=true,height=550,width=640,FLEXPATH=,DEBUGPATH=
+target=Main,debug=true,height=550,width=640,FLEXPATH=,DEBUGPATH=
 build: gen
 	mkdir -p bin
 	$(FLEXPATH)mxmlc src/$(target).as -debug=$(debug) -default-size=$(width),$(height) -output bin/$(target).swf
@@ -11,7 +11,7 @@ generate-files: generate-assets-files generate-settings-file
 generate-settings-file:
 	rm -f src/Settings.as
 	touch src/Settings.as
-	php generators/generate-settings-file.php $(nomusic) $(noeffects)
+	php generators/generate-settings-file.php
 generate-assets-files:
 	rm -Rf src/assets
 	mkdir src/assets
